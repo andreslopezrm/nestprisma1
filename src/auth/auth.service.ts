@@ -6,6 +6,11 @@ export class AuthService {
   constructor(private prisma: PrismaService) {}
 
   demo() {
-    return this.prisma.user.findMany();
+    return this.prisma.user.findMany({
+      select: {
+        id: true,
+        email: true,
+      },
+    });
   }
 }
